@@ -8,9 +8,12 @@ A CLI weather tool built with golang
 
 To install this tool and make the `sun` command available globally, run:
 
-`go get -u github.com/somtojf/sun`
+- Fork and Clone this repo
+- Get your api key from [weatherapi](https://www.weatherapi.com/)
+- Create a `.env` file in the root directory of this project and add the field `API_KEY = your api key here`
 
 ## Usage
 
 To use this tool run:
-`sun -l <location>` to get the weather information for the specified location
+
+- run `go run main.go -l <location>` to get the weather data for the the specified location.
