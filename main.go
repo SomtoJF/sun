@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
@@ -45,16 +46,13 @@ type Weather struct {
 }
 
 func main() {
+	locationFlag := flag.String("l", "lagos", "To get the forecast of a particular location")
+	flag.Parse()
+
 	requestUrl := "http://api.weatherapi.com/v1/forecast.json"
 	apiKey := os.Getenv("API_KEY")
 	days := "3"
-	var city string
-
-	if len(os.Args) > 1 {
-		city = os.Args[1]
-	} else {
-		city = "lagos"
-	}
+	city := *locationFlag
 
 	res, err := http.Get(fmt.Sprintf("%s?key=%s&q=%s&days=%s&alerts=no&aqi=no", requestUrl, apiKey, city, days))
 
