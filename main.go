@@ -9,7 +9,12 @@ import (
 	"time"
 
 	"github.com/fatih/color"
+	"github.com/somtojf/sun/initializers"
 )
+
+func init() {
+	initializers.LoadEnvVariables()
+}
 
 type Weather struct {
 	Location struct {
@@ -41,7 +46,7 @@ type Weather struct {
 
 func main() {
 	requestUrl := "http://api.weatherapi.com/v1/forecast.json"
-	apiKey := "c26061f634ea4804890113753241007"
+	apiKey := os.Getenv("API_KEY")
 	days := "3"
 	var city string
 
